@@ -109,91 +109,11 @@
 	</style>
 </head>
 <body>
-	<section class="page-wrapper">
+	<section class="page-wrapper" style="text-aling:center;">
 		<c:import url="/WEB-INF/jsp/plantilla/menu.jsp"></c:import>
 		<c:import url="/WEB-INF/jsp/plantilla/encabezado.jsp"></c:import>
 		
-		<div class="modal fade modal-dialog-center " id="ModalLogin" style="z-index: 100000;"
-				tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-				<div class="modal-dialog model-sm">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times-circle"></i></button>
-							<h4 class="modal-title">Iniciar sesión</h4>
-						</div>
-						<div class="modal-body">
-							<c:import url="/WEB-INF/jsp/login.jsp" />
-						</div>
-					</div>
-				</div>
-			</div>
-			<section>
-				<div class="row">
-					<img alt="" src="https://raw.githubusercontent.com/proyectoPPi/colsevi/demo1.0/WebContent/resources/IMG_6843.png">
-				</div>
-			</section>
-			<section class="section pv-40 index-content-bg hidden-xs" style="text-align: center;">
-				<div class="row">
-					<div class="title-content">
-						¿Cómo funciona?
-					</div>
-					<div class="process">
-					    <div class="process-row">
-					        <div class="process-step">
-					            <button type="button" class="btn btn-circle" disabled="disabled"><i class="fa fa-sign-in fa-5x"></i></button>
-					            <div class="stepTitle">
-						            <span class="ri-trans">seleccionar</span>
-						        </div>
-						        <div class="stepText">
-						             <span>Elige tu</span>
-						             <span>restaurante</span>
-						         </div>
-					        </div>
-					        <div class="stepSpacing"></div>
-					        <div class="process-step">
-					            <button type="button" class="btn btn-circle" disabled="disabled"><i class="fa fa-cutlery fa-5x"></i></button>
-					             <div class="stepTitle">
-						            <span>seleccionar</span>
-						        </div>
-						        <div class="stepText">
-						             <span>Elige tu</span>
-						             <span>plato</span>
-						         </div>
-					        </div> 
-					        <div class="stepSpacing"></div>
-					         <div class="process-step">
-					            <button type="button" class="btn btn-circle" disabled="disabled"><i class="fa fa-money fa-5x"></i></button>
-					             <div class="stepTitle">
-						            <span>Pagar</span>
-						        </div>
-						        <div class="stepText">
-						             <span>Realiza tu <br/>pago en <br/>efectivo</span>
-						         </div>
-					        </div>
-					         <div class="stepSpacing"></div>
-					        <div class="process-step">
-					            <button type="button" class="btn btn-circle" disabled="disabled"><i class="fa fa-commenting-o fa-5x"></i></button>
-					             <div class="stepTitle">
-						            <span>Evaluar</span>
-						        </div>
-						        <div class="stepText">
-						             <span>Disfruta del <br/>pedido y evalua el <br/>servicio</span>
-						         </div>
-					        </div> 
-					    </div>
-					</div>
-					
-					<div class="row timeText">
-						<div class="descriptionText">TIEMPO MEDIO</div> 
-						 <div class="timeIcon">
-					            <button type="button" class="btn btn-circle btn-cicle-time" disabled="disabled">20 <br/>MIN</button>
-					        </div> 
-						<div class="descriptionText">PARA LA ENTREGA</div>
-					</div>
-					
-				</div>
-			</section>
-			
+			<c:import url="/WEB-INF/jsp/login.jsp" />
 			
 		<c:import url="/WEB-INF/jsp/plantilla/pie_pagina.jsp"></c:import>
 	</section>

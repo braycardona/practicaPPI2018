@@ -30,33 +30,33 @@ public class NavegacionUsuario implements java.io.Serializable {
 		return paramsMenu;
 	}
 	
-	public void cargarPermisos(){
-    	List<Rol> listRol = ColseviDao.getInstance().getRolMapper().selectByExample(new RolExample());
-    	for (Rol bean : listRol) {
-    		List<Integer> paginasId = new ArrayList<Integer>();
-    		
-    		PaginaXRolExample paginaRolExample = new PaginaXRolExample();
-    		paginaRolExample.createCriteria().andId_rolEqualTo(bean.getId_rol());
-    		List<PaginaXRolKey> listPaginaRol = ColseviDao.getInstance().getPaginaXRolMapper().selectByExample(paginaRolExample);
-
-    		if(listPaginaRol != null && listPaginaRol.size() > 0){
-	    		for (PaginaXRolKey paginaXRolKey : listPaginaRol) {
-	    			paginasId.add(paginaXRolKey.getId_pagina());
-				}
-				
-	    		PaginaExample PaginasExample = new PaginaExample();
-	    		PaginasExample.createCriteria().andId_paginaIn(paginasId);
-	    		List<Pagina> ListaPaginas = ColseviDao.getInstance().getPaginaMapper().selectByExample(PaginasExample);
-	    		
-	    		if(ListaPaginas != null && ListaPaginas.size() > 0)
-	    			paramsMenu.put(bean.getId_rol(), ListaPaginas);
-			}
-    	}
-    }
+//	public void cargarPermisos(){
+//    	List<Rol> listRol = ColseviDao.getInstance().getRolMapper().selectByExample(new RolExample());
+//    	for (Rol bean : listRol) {
+//    		List<Integer> paginasId = new ArrayList<Integer>();
+//    		
+//    		PaginaXRolExample paginaRolExample = new PaginaXRolExample();
+//    		paginaRolExample.createCriteria().andId_rolEqualTo(bean.getId_rol());
+//    		List<PaginaXRolKey> listPaginaRol = ColseviDao.getInstance().getPaginaXRolMapper().selectByExample(paginaRolExample);
+//
+//    		if(listPaginaRol != null && listPaginaRol.size() > 0){
+//	    		for (PaginaXRolKey paginaXRolKey : listPaginaRol) {
+//	    			paginasId.add(paginaXRolKey.getId_pagina());
+//				}
+//				
+//	    		PaginaExample PaginasExample = new PaginaExample();
+//	    		PaginasExample.createCriteria().andId_paginaIn(paginasId);
+//	    		List<Pagina> ListaPaginas = ColseviDao.getInstance().getPaginaMapper().selectByExample(PaginasExample);
+//	    		
+//	    		if(ListaPaginas != null && ListaPaginas.size() > 0)
+//	    			paramsMenu.put(bean.getId_rol(), ListaPaginas);
+//			}
+//    	}
+//    }
 	 
 	public List<Pagina> getPaginasRol(Integer rol){
-    	if(getInstance() == null || getInstance().isEmpty())
-    		cargarPermisos();
+//    	if(getInstance() == null || getInstance().isEmpty())
+//    		cargarPermisos();
 
     	return (List<Pagina>) getInstance().get(rol);
     }
