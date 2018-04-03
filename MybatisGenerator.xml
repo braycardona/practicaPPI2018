@@ -4,18 +4,22 @@
   "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
 <generatorConfiguration>
-  <classPathEntry location="C:\Users\Brayan Cardona\git\colsevi\WebContent\WEB-INF\lib\mysql-connector-java-5.1.18-bin.jar" />
+  <classPathEntry location="C:\Users\BRAYAN\practicas2018_1\practica\WebContent\WEB-INF\lib\mysql-connector-java-5.1.18-bin.jar" />
 
   <context id="MyIbatis" targetRuntime="MyBatis3">
     <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-        connectionURL="jdbc:mysql://localhost:3306/COLSEVI"
+        connectionURL="jdbc:mysql://localhost:3307/practicaPPI"
         userId="root"
         password="root">
     </jdbcConnection>
 
-    <javaModelGenerator targetPackage="com.colsevi.dao.general.model" targetProject="colsevi/src" />
-    <sqlMapGenerator targetPackage="com.colsevi.dao.general.map" targetProject="colsevi/src" />
-    <javaClientGenerator targetPackage="com.colsevi.dao.general.map" targetProject="colsevi/src" type="XMLMAPPER" />
-    <table schema="colsevi" tableName="mensajeria"><property name="useActualColumnNames" value="true"/></table>
+    <javaModelGenerator targetPackage="com.practica.dao.coordinacion.model" targetProject="practica/src" />
+    <sqlMapGenerator targetPackage="com.practica.dao.coordinacion.map" targetProject="practica/src" />
+    <javaClientGenerator targetPackage="com.practica.dao.coordinacion.map" targetProject="practica/src" type="XMLMAPPER" />
+    <table schema="practicaPPI" tableName="programa_academico"><property name="useActualColumnNames" value="true"/></table>
+    <table schema="practicaPPI" tableName="cargo"><property name="useActualColumnNames" value="true"/></table>
+    <table schema="practicaPPI" tableName="practica_estudiante"><property name="useActualColumnNames" value="true"/></table>
+    <table schema="practicaPPI" tableName="hoja_vida"><property name="useActualColumnNames" value="true"/></table>
+    <table schema="practicaPPI" tableName="empresa"><property name="useActualColumnNames" value="true"/></table>
   </context>
 </generatorConfiguration>

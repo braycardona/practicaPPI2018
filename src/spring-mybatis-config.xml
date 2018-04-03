@@ -7,7 +7,7 @@
 		
 	<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource">
 		<property value="com.mysql.jdbc.Driver" name="driverClassName" />
-		<property value="jdbc:mysql://127.0.0.1:3306/COORDINACION" name="url" />
+		<property value="jdbc:mysql://localhost:3307/practicaPPI" name="url" />
 		<property value="root" name="username" />
 		<property value="root" name="password" />
 	</bean>

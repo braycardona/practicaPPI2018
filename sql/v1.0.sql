@@ -70,9 +70,9 @@ ALTER TABLE usuario ADD CONSTRAINT fk_id_persona FOREIGN KEY (id_persona) REFERE
 ALTER TABLE persona ADD CONSTRAINT fk_codigo_prog_academico FOREIGN KEY (codigo_prog_academico) REFERENCES programa_academico(codigo_academico);
 ALTER TABLE persona ADD CONSTRAINT fk_codigo_cargo FOREIGN KEY (codigo_cargo) REFERENCES cargo(codigo_cargo);
 
-ALTER TABLE practica_estudiante ADD CONSTRAINT fk_id_persona FOREIGN KEY (id_persona) REFERENCES persona(cedula);
-ALTER TABLE practica_estudiante ADD CONSTRAINT fk_id_hoja_vida FOREIGN KEY (id_hoja_vida) REFERENCES hoja_vida(id_hoja_vida);
-ALTER TABLE practica_estudiante ADD CONSTRAINT fk_id_empresa FOREIGN KEY (id_empresa) REFERENCES empresa(nit_empresa);
+ALTER TABLE practica_estudiante ADD CONSTRAINT fk_prac_estudiante_id FOREIGN KEY (id_persona) REFERENCES persona(cedula);
+ALTER TABLE practica_estudiante ADD CONSTRAINT fk_prac_estudiante_hv FOREIGN KEY (id_hoja_vida) REFERENCES hoja_vida(id_hoja_vida);
+ALTER TABLE practica_estudiante ADD CONSTRAINT fk_prac_estudiante_emp FOREIGN KEY (id_empresa) REFERENCES empresa(nit_empresa);
 
-ALTER TABLE hoja_vida ADD CONSTRAINT fk_id_persona FOREIGN KEY (id_persona) REFERENCES persona(cedula);
-ALTER TABLE hoja_vida ADD CONSTRAINT fk_id_prog_academico FOREIGN KEY (id_prog_academico) REFERENCES programa_academico(codigo_academico);
+ALTER TABLE hoja_vida ADD CONSTRAINT fk_hv_id FOREIGN KEY (id_persona) REFERENCES persona(cedula);
+ALTER TABLE hoja_vida ADD CONSTRAINT fk_hv_prog_academico FOREIGN KEY (id_prog_academico) REFERENCES programa_academico(codigo_academico);
