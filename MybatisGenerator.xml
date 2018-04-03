@@ -13,13 +13,10 @@
         password="root">
     </jdbcConnection>
 
-    <javaModelGenerator targetPackage="com.practica.dao.coordinacion.model" targetProject="practica/src" />
-    <sqlMapGenerator targetPackage="com.practica.dao.coordinacion.map" targetProject="practica/src" />
-    <javaClientGenerator targetPackage="com.practica.dao.coordinacion.map" targetProject="practica/src" type="XMLMAPPER" />
-    <table schema="practicaPPI" tableName="programa_academico"><property name="useActualColumnNames" value="true"/></table>
-    <table schema="practicaPPI" tableName="cargo"><property name="useActualColumnNames" value="true"/></table>
-    <table schema="practicaPPI" tableName="practica_estudiante"><property name="useActualColumnNames" value="true"/></table>
-    <table schema="practicaPPI" tableName="hoja_vida"><property name="useActualColumnNames" value="true"/></table>
-    <table schema="practicaPPI" tableName="empresa"><property name="useActualColumnNames" value="true"/></table>
+    <javaModelGenerator targetPackage="com.practica.dao.general.model" targetProject="practica/src" />
+    <sqlMapGenerator targetPackage="com.practica.dao.general.map" targetProject="practica/src" />
+    <javaClientGenerator targetPackage="com.practica.dao.general.map" targetProject="practica/src" type="XMLMAPPER" />
+    <table schema="practicaPPI" tableName="usuario"><property name="useActualColumnNames" value="true"/></table>
+    
   </context>
 </generatorConfiguration>

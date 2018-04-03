@@ -26,45 +26,17 @@ public class BaseConfigController implements Serializable {
 	}
 	
 	public String getMenu(HttpServletRequest request){
-		String menu = "";
-		Map<String, Object> mapa = new HashMap<String, Object>();
-		mapa.put("rol", getUsuario(request).getRol());
+		StringBuilder menu = new StringBuilder();
 		
-//		if(getUsuario(request) != null){
-//			List<Pagina> listaPag = ColseviDao.getInstance().getPaginaMapper().ListaMenuPadre(mapa);
-//			
-//			for(Pagina pag: listaPag){
-//				if(pag.getMenu()){
-//					
-//					if(pag.getPadrePagina() != null && !pag.getPadrePagina().trim().isEmpty()){
-//						menu += "<li class=\"dropdown\">";
-//					}else{
-//						menu += "<li>";
-//					}
-//					menu += "<a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\">"+pag.getNombre()+"</a>";
-//					
-//					if(pag.getPadrePagina() != null && !pag.getPadrePagina().trim().isEmpty()){
-//						String[] Padre = pag.getPadrePagina().split(",");
-//						List<Integer> list = new ArrayList<Integer>();
-//						for(int i = 0; i<Padre.length; i++){
-//							list.add(Integer.parseInt(Padre[i]));
-//						}
-//						PaginaExample PE = new PaginaExample();
-//						PE.createCriteria().andId_paginaIn(list);
-//						List<Pagina> listaHijo = ColseviDao.getInstance().getPaginaMapper().selectByExample(PE);
-//						
-//						menu += "<ul class=\"dropdown-menu\">";
-//						for(Pagina hijo: listaHijo){
-//							menu += "<li>"+"<a onclick=\"HredireccionarVista('" + request.getContextPath()+hijo.getUrl() + "')\" >"+hijo.getNombre()+"</a></li>";
-//						}
-//						menu += "</ul>";
-//					}
-//					
-//					menu += "</li>";
-//				}
-//			}
-//		}
-		return menu;
+		menu.append("<li class=\"dropdown\">")
+			.append("<ul class=\"dropdown-menu\">")
+			.append("<li>")
+			.append("<a onclick=\"HredireccionarVista('" + request.getContextPath() + "/usuario.html ')\" >Usuario</a>")
+			.append("</li>")
+			.append("</ul>")
+			.append("</li>");
+		
+		return menu.toString();
 	}
 	
 	public SesionUsuario getUsuario(HttpServletRequest request){

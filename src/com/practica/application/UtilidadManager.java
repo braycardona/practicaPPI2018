@@ -1,12 +1,14 @@
 package com.practica.application;
 
 import java.math.BigDecimal;
+import java.security.MessageDigest;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Formatter;
 import java.util.Locale;
 
 public class UtilidadManager {
@@ -126,5 +128,25 @@ public class UtilidadManager {
 		valor.replace(" ", "");
 		
 		return valor;
+	}
+	
+	public static String byteToHex(String clave){
+		String result = null;
+		try{
+			MessageDigest encrypt = MessageDigest.getInstance("SHA-1");
+			encrypt.reset();
+			encrypt.update(clave.getBytes("UTF-8"));
+			final byte[] hash = encrypt.digest();
+			
+		    Formatter formatter = new Formatter();
+		    for (byte b : hash){
+		        formatter.format("%02x", b);
+		    }
+		    result = formatter.toString();
+		    formatter.close();
+		}catch(Exception e){
+			
+		}
+	    return result;
 	}
 }

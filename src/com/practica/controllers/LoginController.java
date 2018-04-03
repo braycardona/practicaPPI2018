@@ -10,6 +10,12 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.practica.application.PracticaDao;
+import com.practica.application.SesionUsuario;
+import com.practica.application.UtilidadManager;
+import com.practica.dao.general.model.Usuario;
+import com.practica.dao.general.model.UsuarioExample;
+
 @Controller
 @RequestMapping("login")
 public class LoginController extends BaseConfigController {
@@ -22,31 +28,29 @@ public class LoginController extends BaseConfigController {
 		return new ModelAndView("/");
 	}
 	
-//	@RequestMapping("/Ingresar")
-//	public ModelAndView Ingresar(HttpServletRequest request, HttpServletResponse response, ModelMap model){
-//		String usuario = request.getParameter("usuario");
-//		String clave = request.getParameter("clave");
-//		
-//		String errores = validar(usuario, clave);
-//		if(!errores.isEmpty()){
-//			model.addAttribute("error", errores);
-//			return new ModelAndView("front/index");
-//		}
-//		
-//		SesionUsuario U = getUsuario(usuario, clave, model);
-//		if(U != null){
-//			HttpSession sesion = request.getSession(true);
-//			sesion.setAttribute("sesion", U);
-//			Usuario bean = new Usuario();
+	@RequestMapping("/Ingresar")
+	public ModelAndView Ingresar(HttpServletRequest request, HttpServletResponse response, ModelMap model){
+		String usuario = request.getParameter("usuario");
+		String clave = request.getParameter("clave");
+		
+		String errores = validar(usuario, clave);
+		if(!errores.isEmpty()){
+			model.addAttribute("error", errores);
+			return new ModelAndView("front/index");
+		}
+		
+		SesionUsuario U = getUsuario(usuario, clave, model);
+		if(U != null){
+			HttpSession sesion = request.getSession(true);
+			sesion.setAttribute("sesion", U);
+			Usuario bean = new Usuario();
 //			bean.setUsuario(U.getUsuario());
-//			bean.setPrimer_login("T");
-////			ColseviDao.getInstance().getUsuarioMapper().updateByPrimaryKeySelective(bean);
-//		}else{
-//			return new ModelAndView("front/index");
-//		}
-//		//principalBase
-//		return new ModelAndView("redireccionInicial","col",getValoresGenericos(request));
-//	}
+		}else{
+			return new ModelAndView("front/index");
+		}
+		//principalBase
+		return new ModelAndView("redireccionInicial","col",getValoresGenericos(request));
+	}
 	
 	@RequestMapping("/Cerrar")
 	public ModelAndView Logouth(HttpServletRequest request, HttpServletResponse response, ModelMap model){
@@ -74,40 +78,35 @@ public class LoginController extends BaseConfigController {
 		return error;
 	}
 
-//	public SesionUsuario getUsuario(String usuario,String clave, ModelMap model){
-//		SesionUsuario U = new SesionUsuario();
-//		String sha = GeneralManager.byteToHex(clave);
-//		if(sha == null){
-//			model.addAttribute("error", "Contactar al administrador");
-//			return null;
-//		}
-//		UsuarioExample UE = new UsuarioExample();
-//		UE.createCriteria().andUsuarioEqualTo(usuario).andClaveEqualTo(sha);
-//		Usuario usuarioBean = new Usuario();
-////		
-////		try{
-////			usuarioBean = ColseviDao.getInstance().getUsuarioMapper().selectByExample(UE).get(0);
-////		}catch(Exception e){
-////			logger.error(e.getMessage());
-////			model.addAttribute("error", "Usuario y/o contraseña incorrecta");
-////			return null;
-////		}
-//		
-//		if(!usuarioBean.getEstado().equals("T")){
-//			model.addAttribute("error", "Usuario inactivo");
-//			return null;
-//		}
-//		if(usuarioBean.getId_rol() == null){
-//			model.addAttribute("error", "Usuario sin perfil asignado");
-//			return null;
-//		}
-//		
-//		U.setUsuario(usuarioBean.getUsuario());
-//		U.setRol(usuarioBean.getId_rol());
+	public SesionUsuario getUsuario(String usuario,String clave, ModelMap model){
+		SesionUsuario U = new SesionUsuario();
+		String sha = UtilidadManager.byteToHex(clave);
+		if(sha == null){
+			model.addAttribute("error", "Contactar al administrador");
+			return null;
+		}
+		UsuarioExample usuarioExample = new UsuarioExample();
+		usuarioExample.createCriteria().andUsuarioEqualTo(usuario).andClaveEqualTo(sha);
+		Usuario usuarioBean = new Usuario();
+		
+		try{
+			usuarioBean = PracticaDao.getInstance().getUsuarioMapper().selectByExample(usuarioExample).get(0);
+		}catch(Exception e){
+			logger.error(e.getMessage());
+			model.addAttribute("error", "Usuario y/o contraseña incorrecta");
+			return null;
+		}
+		
+		if(!usuarioBean.getEstado().equals("T")){
+			model.addAttribute("error", "Usuario inactivo");
+			return null;
+		}
+		
+//		U.setIde_usuario(usuarioBean.getId_usuario());
 //		U.setPersona(usuarioBean.getId_persona());
-//		
-//		return U;
-//	}
+		
+		return U;
+	}
 	
 //	@RequestMapping("/recuperar")
 //	public ModelAndView recuperar(HttpServletRequest request, ModelMap model){

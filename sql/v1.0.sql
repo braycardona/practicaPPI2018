@@ -6,7 +6,8 @@ USE practicaPPI;
 CREATE TABLE usuario(
     id_usuario INT AUTO_INCREMENT,
 	id_persona INT NOT NULL,
-    nombre_usuario VARCHAR(120) NOT NULL,
+    usuario VARCHAR(120) NOT NULL,
+    estado VARCHAR(1) NOT NULL,
 	contrasena VARCHAR(120) NOT NULL,
     PRIMARY KEY(id_usuario)
 );

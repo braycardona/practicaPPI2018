@@ -20,5 +20,34 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 	
+	<bean id="personaMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property value="com.practica.dao.general.map.PersonaMapper" name="mapperInterface" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>	
+	<bean id="usuarioMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property value="com.practica.dao.general.map.UsuarioMapper" name="mapperInterface" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>	
+	
+	<bean id="cargoMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property value="com.practica.dao.coordinacion.map.CargoMapper" name="mapperInterface" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>	
+	<bean id="empresaMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property value="com.practica.dao.coordinacion.map.EmpresaMapper" name="mapperInterface" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>	
+	<bean id="hojaVidaMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property value="com.practica.dao.coordinacion.map.HojaVidaMapper" name="mapperInterface" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>	
+	<bean id="practicaEstuMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property value="com.practica.dao.coordinacion.map.PracticaEstudianteMapper" name="mapperInterface" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>	
+	<bean id="programaAcadMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property value="com.practica.dao.coordinacion.map.ProgramaAcademicoMapper" name="mapperInterface" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>	
 	
 </beans>
