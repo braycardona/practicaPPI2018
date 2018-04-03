@@ -3,7 +3,7 @@
 	     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		 xmlns="http://java.sun.com/xml/ns/javaee" 
 		 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
- <display-name>coordinacion</display-name>
+ <display-name>practica</display-name>
 	<servlet>
 		<servlet-name>spring-dispatcher</servlet-name>
 			<servlet-class>
@@ -20,7 +20,7 @@
 		<description>Servlet para montar datos en session y application scope de configuracion</description>
 		<display-name>IniciarDatos</display-name>
 		<servlet-name>IniciarDatos</servlet-name>
-		<servlet-class>com.colsevi.application.IniciarDatos</servlet-class>
+		<servlet-class>com.practica.application.IniciarDatos</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 
@@ -91,7 +91,7 @@
 	<filter>
 		<description>Filtro para autenticacion de usuarios del sistema</description>
 		<filter-name>AuthenticationFilter</filter-name>
-		<filter-class>com.colsevi.application.FiltroAutenticacion</filter-class>
+		<filter-class>com.practica.application.FiltroAutenticacion</filter-class>
 	</filter>
 	<filter-mapping>
 		<filter-name>AuthenticationFilter</filter-name>

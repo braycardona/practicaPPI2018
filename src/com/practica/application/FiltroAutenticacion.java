@@ -2,7 +2,6 @@ package com.practica.application;
  
 import java.io.IOException;
 import java.io.Serializable;
-import java.util.List;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -11,8 +10,6 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
-
-import com.colsevi.dao.usuario.model.Pagina;
 
 public class FiltroAutenticacion implements Filter, Serializable{
 
@@ -61,11 +58,7 @@ public class FiltroAutenticacion implements Filter, Serializable{
 		if (path.endsWith("jpg")  || path.endsWith("png")  || path.endsWith("gif") || path.endsWith("woff")  ||
 			path.endsWith("css") || path.endsWith("js")   ||  path.endsWith("pdf") || path.endsWith("PNG")  || 
 			path.startsWith("/login") ||
-			path.startsWith("/Pedido/PedidoWizardStep1") ||
-			path.startsWith("/Pedido/PedidoWizardStep2") ||
-			path.startsWith("/Pedido/PedidoWizardStep3") ||
 			path.startsWith("/subirArchivos") ||
-			path.startsWith("/reconstruirConfiguracion") ||
 			path.startsWith("/principalBase") ||
 			path.startsWith(INDEX)
 			){
@@ -79,16 +72,8 @@ public class FiltroAutenticacion implements Filter, Serializable{
 		if(uri.equals("/")){
 			return true;
 		}
-		
-		NavegacionUsuario iniciar = new NavegacionUsuario();
-		List<Pagina> ListaPaginas = iniciar.getPaginasRol(user.getRol());
-		for (Pagina bean : ListaPaginas) {
-			if(bean.getUrl().endsWith(".html")){
-				String[] urlSplit = bean.getUrl().split(".html");
-				if(url.replace(".html", "").startsWith(urlSplit[0])){
-					return true;
-				}
-			}
+		if (url.startsWith("/principalBase")) {
+			return true;
 		}
 		return false;
 	}
