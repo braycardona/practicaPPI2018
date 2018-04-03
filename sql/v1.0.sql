@@ -2,6 +2,7 @@ DROP DATABASE IF EXISTS practicaPPI;
 CREATE DATABASE practicaPPI;
 USE practicaPPI;
 
+
 CREATE TABLE usuario(
     id_usuario INT AUTO_INCREMENT,
 	id_persona INT NOT NULL,
