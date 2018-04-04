@@ -1,6 +1,6 @@
 var xhr = null;
 var dataMap = {};
-var registrosPagina = configuracion['CANT_REGISTROS_PAGINA'];
+var registrosPagina = 10;
 var cantPagina = 16;
 
 

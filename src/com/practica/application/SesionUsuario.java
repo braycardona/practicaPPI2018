@@ -2,14 +2,14 @@ package com.practica.application;
 
 public class SesionUsuario {
 	
-    private String  ide_usuario;
+    private Integer  ide_usuario;
     private Integer ide_persona;
     private Integer nombre;
 	
-    public String getIde_usuario() {
+    public Integer getIde_usuario() {
 		return ide_usuario;
 	}
-	public void setIde_usuario(String ide_usuario) {
+	public void setIde_usuario(Integer ide_usuario) {
 		this.ide_usuario = ide_usuario;
 	}
 	public Integer getIde_persona() {

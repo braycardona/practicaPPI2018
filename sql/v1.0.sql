@@ -8,22 +8,23 @@ CREATE TABLE usuario(
 	id_persona INT NOT NULL,
     usuario VARCHAR(120) NOT NULL,
     estado VARCHAR(1) NOT NULL,
-	contrasena VARCHAR(120) NOT NULL,
+	clave VARCHAR(120) NOT NULL,
     PRIMARY KEY(id_usuario)
 );
 
 CREATE TABLE persona(
-    cedula INT NOT NULL,
+	id_persona INT AUTO_INCREMENT,
+    cedula BIGINT NOT NULL,
     nombre VARCHAR(120) NOT NULL,
 	apellido_1 VARCHAR(120) NOT NULL,
 	apellido_2 VARCHAR(120),
 	telefono_1 INT NOT NULL,
 	telefono_2 INT,
 	correo VARCHAR(100) NOT NULL,
-	direccion VARCHAR(150) NOT NULL,
-	codigo_prog_academico VARCHAR(20) NOT NULL,
-	codigo_cargo VARCHAR(20) NOT NULL,
-    PRIMARY KEY(cedula)
+	direccion VARCHAR(150),
+	codigo_prog_academico VARCHAR(20),
+	codigo_cargo VARCHAR(20),
+    PRIMARY KEY(id_persona)
 );
 
 CREATE TABLE programa_academico(
@@ -66,14 +67,14 @@ CREATE TABLE empresa(
 	PRIMARY KEY(nit_empresa)
 );
 
-ALTER TABLE usuario ADD CONSTRAINT fk_id_persona FOREIGN KEY (id_persona) REFERENCES persona(cedula);
+ALTER TABLE usuario ADD CONSTRAINT fk_id_persona FOREIGN KEY (id_persona) REFERENCES persona(id_persona);
 
 ALTER TABLE persona ADD CONSTRAINT fk_codigo_prog_academico FOREIGN KEY (codigo_prog_academico) REFERENCES programa_academico(codigo_academico);
 ALTER TABLE persona ADD CONSTRAINT fk_codigo_cargo FOREIGN KEY (codigo_cargo) REFERENCES cargo(codigo_cargo);
 
-ALTER TABLE practica_estudiante ADD CONSTRAINT fk_prac_estudiante_id FOREIGN KEY (id_persona) REFERENCES persona(cedula);
+ALTER TABLE practica_estudiante ADD CONSTRAINT fk_prac_estudiante_id FOREIGN KEY (id_persona) REFERENCES persona(id_persona);
 ALTER TABLE practica_estudiante ADD CONSTRAINT fk_prac_estudiante_hv FOREIGN KEY (id_hoja_vida) REFERENCES hoja_vida(id_hoja_vida);
 ALTER TABLE practica_estudiante ADD CONSTRAINT fk_prac_estudiante_emp FOREIGN KEY (id_empresa) REFERENCES empresa(nit_empresa);
 
-ALTER TABLE hoja_vida ADD CONSTRAINT fk_hv_id FOREIGN KEY (id_persona) REFERENCES persona(cedula);
+ALTER TABLE hoja_vida ADD CONSTRAINT fk_hv_id FOREIGN KEY (id_persona) REFERENCES persona(id_persona);
 ALTER TABLE hoja_vida ADD CONSTRAINT fk_hv_prog_academico FOREIGN KEY (id_prog_academico) REFERENCES programa_academico(codigo_academico);

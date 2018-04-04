@@ -29,11 +29,12 @@ public class BaseConfigController implements Serializable {
 		StringBuilder menu = new StringBuilder();
 		
 		menu.append("<li class=\"dropdown\">")
-			.append("<ul class=\"dropdown-menu\">")
-			.append("<li>")
-			.append("<a onclick=\"HredireccionarVista('" + request.getContextPath() + "/usuario.html ')\" >Usuario</a>")
-			.append("</li>")
-			.append("</ul>")
+			.append("<a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" onclick=\"HredireccionarVista('" + request.getContextPath() + "/Usuario.html')\" >Usuario</a>")
+//			.append("<ul class=\"dropdown-menu\">")
+//			.append("<li>")
+//			.append("<a onclick=\"HredireccionarVista('" + request.getContextPath() + "/usuario.html')\" >Usuario</a>")
+//			.append("</li>")
+//			.append("</ul>")
 			.append("</li>");
 		
 		return menu.toString();

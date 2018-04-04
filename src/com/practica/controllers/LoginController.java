@@ -44,7 +44,8 @@ public class LoginController extends BaseConfigController {
 			HttpSession sesion = request.getSession(true);
 			sesion.setAttribute("sesion", U);
 			Usuario bean = new Usuario();
-//			bean.setUsuario(U.getUsuario());
+			bean.setId_persona(U.getIde_persona());
+//			bean.setId_usuario(U.getIde_usuario());
 		}else{
 			return new ModelAndView("front/index");
 		}
@@ -97,13 +98,13 @@ public class LoginController extends BaseConfigController {
 			return null;
 		}
 		
-		if(!usuarioBean.getEstado().equals("T")){
+		if(!usuarioBean.getEstado().equals("A")){
 			model.addAttribute("error", "Usuario inactivo");
 			return null;
 		}
 		
-//		U.setIde_usuario(usuarioBean.getId_usuario());
-//		U.setPersona(usuarioBean.getId_persona());
+		U.setIde_usuario(usuarioBean.getId_usuario());
+		U.setIde_persona(usuarioBean.getId_persona());
 		
 		return U;
 	}

@@ -3,7 +3,7 @@
 <html>
 <head>
    <meta charset="UTF-8" />
-	<title>App Colsevi</title>
+	<title>Coordinacion</title>
 	<c:import url="/WEB-INF/jsp/plantilla/estilos_genericos.jsp" />
 </head>
 <body>
@@ -25,7 +25,7 @@
 	
 	<script>
 		jQuery(document).ready(function(){
-			HredireccionarVista(contexto + "/General/Establecimiento");
+// 			HredireccionarVista(contexto + "/General/Establecimiento");
 		});
 	</script>
 	
