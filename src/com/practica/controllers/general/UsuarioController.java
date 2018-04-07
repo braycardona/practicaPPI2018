@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -16,6 +17,7 @@ import com.practica.controllers.BaseConfigController;
 import com.practica.dao.general.model.Usuario;
 import com.practica.dao.general.model.UsuarioExample;
 
+@Controller
 @RequestMapping("/Usuario")
 public class UsuarioController extends BaseConfigController {
 	
@@ -75,7 +77,7 @@ public class UsuarioController extends BaseConfigController {
 					opciones.put("usuario", bean.getId_usuario());
 					opciones.put("persona", bean.getId_persona());
 					opciones.put("estado", bean.getEstado());
-					opciones.put("usuario", bean.getUsuario());
+					opciones.put("nombre", bean.getUsuario());
 					resultado.add(opciones);
 				}catch(Exception e){
 					logger.error(e.getMessage());
